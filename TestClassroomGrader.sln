@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestClassroomGrader", "TestClassroomGrader\TestClassroomGrader.csproj", "{A869A24F-EAF9-4E68-939E-C2FEC243978B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A869A24F-EAF9-4E68-939E-C2FEC243978B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A869A24F-EAF9-4E68-939E-C2FEC243978B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A869A24F-EAF9-4E68-939E-C2FEC243978B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A869A24F-EAF9-4E68-939E-C2FEC243978B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

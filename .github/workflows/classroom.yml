@@ -1,0 +1,47 @@
+name: Autograding Tests DotNet
+on:
+  - push
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+        
+      - name: A dotnet test
+        id: a-dotnet-test
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: A dotnet test test
+          command: dotnet test --filter "FullyQualifiedName=TestClassroomGrader.TestsForClassroom.AlwaysTrue"
+          timeout: 10
+          max-score: 10
+          
+      - name: A dotnet test2
+        id: a-dotnet-test2
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: A dotnet test test2
+          command: dotnet test --filter "FullyQualifiedName=TestClassroomGrader.TestsForClassroom.AlwaysFalse" 
+          timeout: 10
+          max-score: 20
+          
+      - name: Autograding Reporter
+        uses: education/autograding-grading-reporter@v1
+        env:
+          A-DOTNET-TEST_RESULTS: "${{steps.a-dotnet-test.outputs.result}}"
+          A-DOTNET-TEST2_RESULTS: "${{steps.a-dotnet-test2.outputs.result}}"
+        with:
+          runners: a-dotnet-test, a-dotnet-test2
